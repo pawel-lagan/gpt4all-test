@@ -14,6 +14,9 @@ public class InteractResource {
     @Inject
     InteractService interactService;
 
+    @Inject
+    EmbeddingsService embeddingsService;
+
     @GET
     @Produces(MediaType.TEXT_PLAIN)
     public String greet() {
@@ -25,5 +28,13 @@ public class InteractResource {
     @Produces(MediaType.TEXT_PLAIN)
     public String interact(String content) {
         return interactService.request(content);
+    }
+
+    @POST
+    @Path("/embeddings")
+    @Consumes(MediaType.TEXT_PLAIN)
+    @Produces(MediaType.TEXT_PLAIN)
+    public String embeddings(String content) {
+        return embeddingsService.embeddings(content).toString();
     }
 }
