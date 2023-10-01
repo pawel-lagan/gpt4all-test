@@ -55,8 +55,8 @@ public class InteractService {
     }
 
     String text = choices.get(0).get("content");
-
-    return parseResponse(text);
+    return text;
+    //return parseResponse(text);
   }
 
   private String parseResponse(String text) {
