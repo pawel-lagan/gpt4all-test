@@ -60,17 +60,26 @@ public class EmbeddingsService {
     model.close();
   }
 
-  public float[][] embeddings(String content) {
+  public float[] embeddings(String content) {
 
     try(Predictor<String[], float[][]> predictor = model.newPredictor()) {
-      var inputs = content.split("\n");
+      var inputs = new String[]{content};
       var embeddings = predictor.predict(inputs);
       for (int i = 0; i < inputs.length; i++) {
         logger.info("Embedding for: {}\n", Arrays.toString(embeddings[i]));
       }
-      return embeddings;
+      return embeddings[0];
     } catch (TranslateException e) {
       throw new RuntimeException(e);
     }
+  }
+
+  public List<Double> embeddingsAsList(String content) {
+    var emeddings = embeddings(content);
+    var result = new ArrayList<Double>(emeddings.length);
+    for (var i=0;i<emeddings.length;i++) {
+      result.add(Double.valueOf(emeddings[i]));
+    }
+    return result;
   }
 }
