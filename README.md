@@ -63,13 +63,34 @@ You can then execute your native executable with: `./target/quarkus-gpt-1.0.0-SN
 
 If you want to learn more about building native executables, please consult https://quarkus.io/guides/maven-tooling.
 
-## Related Guides
+## Usage guide
+
+Steps:
+
+Check if app is responding
+GET http://localhost:8080/interact 
+
+Try code generation skills of the chat (response will take around 1 min)
+POST http://localhost:8080/interact
+Content-Type: text/plain
+Body:
+write a Java program that encodes string to base64
+
+Add a content to db:
+POST http://localhost:8080/interact/article
+Content-Type: text/plain
+Body:
+Elephant is cool
 
 
-## Provided Code
+Ask a question about your's content:
+POST http://localhost:8080/interact/ask
+Content-Type: text/plain
+Body:
+What is Elephant?
 
-### RESTEasy Reactive
 
-Easily start your Reactive RESTful Web Services
 
-[Related guide section...](https://quarkus.io/guides/getting-started-reactive#reactive-jax-rs-resources)
+
+
+
