@@ -4,6 +4,6 @@ drop table if exists article;
 
 create table article (
   id serial primary key,  
-  body text not null,
+  content text,
   embedding vector(384)
 );

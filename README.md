@@ -6,6 +6,20 @@ Java code - simple code generator powered by GPT4All model.
 This project uses Quarkus, the Supersonic Subatomic Java Framework.
 If you want to learn more about Quarkus, please visit its website: https://quarkus.io/ .
 
+## Prerequsits
+
+Download models:
+https://huggingface.co/orel12/ggml-gpt4all-j-v1.3-groovy/tree/main
+https://tfhub.dev/google/universal-sentence-encoder/4
+
+Run postgresql with pgvector extension
+
+docker run -e POSTGRES_USER=user -e POSTGRES_PASSWORD=password -p 5432:5432 -v /data:/var/lib/postgresql/data --name postgresql ankane/pgvector
+
+Run SQL that adds ex:
+create database embeddings;
+create extension vector;
+
 ## Running the application in dev mode
 
 You can run your application in dev mode that enables live coding using:
